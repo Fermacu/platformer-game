@@ -76,7 +76,14 @@ public class Player : MonoBehaviour
         StartCoroutine(KnockbackRoutine());
         anim.SetTrigger("knockback");
         rb.linearVelocity = new Vector2(knockbackPower.x * -facingDir, knockbackPower.y);
-    }   
+    }
+
+    private IEnumerator KnockbackRoutine()
+    {
+        isKnocked = true;
+        yield return new WaitForSeconds(knockbackDuration);
+        isKnocked = false;
+    }
 
     private void UpdateAirborneStatus()
     {
@@ -93,18 +100,6 @@ public class Player : MonoBehaviour
 
         if(rb.linearVelocity.y < 0)
             ActivateCoyoteJump();
-    }
-
-    private void HandleWallSlide()
-    {
-        bool canWallSlide = isWallDetected && rb.linearVelocity.y < 0;
-        float yModifier = yInput < 0 ? 1: .05f;
-
-        if (canWallSlide == false)
-            return;
-
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * yModifier);
-        
     }
 
     private void HandleLanding()
@@ -129,6 +124,7 @@ public class Player : MonoBehaviour
         
     }
 
+    #region Buffer & Coyote Jump
     private void RequestBufferJump()
     {
         if(isAirborne)
@@ -146,6 +142,7 @@ public class Player : MonoBehaviour
 
     private void ActivateCoyoteJump() => coyoteJumpActivated = Time.time;
     private void CancelCoyoteJump() => coyoteJumpActivated = Time.time - 1;
+    #endregion
 
     private void JumpButton()
     {
@@ -178,7 +175,9 @@ public class Player : MonoBehaviour
     {
         canDoubleJump = true;
         rb.linearVelocity = new Vector2(wallJumpForce.x * -facingDir, wallJumpForce.y);
+        
         Flip();
+
         StopAllCoroutines();
         StartCoroutine(WallJumpRoutine());
     }
@@ -190,11 +189,16 @@ public class Player : MonoBehaviour
         isWallJumping = false;
     }
 
-    private IEnumerator KnockbackRoutine()
+    private void HandleWallSlide()
     {
-        isKnocked = true;
-        yield return new WaitForSeconds(knockbackDuration);
-        isKnocked = false;
+        bool canWallSlide = isWallDetected && rb.linearVelocity.y < 0;
+        float yModifier = yInput < 0 ? 1 : .05f;
+
+        if (canWallSlide == false)
+            return;
+
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * yModifier);
+
     }
 
     private void HandleAnimations()
