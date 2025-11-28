@@ -16,6 +16,11 @@ public class Player : MonoBehaviour
 
     private bool canDoubleJump;
 
+    [Header("Wall Interactions")]
+    [SerializeField] private float wallJumpDuration = .6f;
+    [SerializeField] private Vector2 wallJumpForce;
+    private bool isWallJumping;
+
     [Header("Collision Info")]
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private float wallCheckDistance;
@@ -96,7 +101,11 @@ public class Player : MonoBehaviour
         {
             Jump();
         }
-         else if (canDoubleJump)
+        else if (isWallDetected && !isGrounded)
+        {
+            WallJump();
+        }   
+        else if (canDoubleJump)
         {
            DoubleJump();
         }
@@ -106,8 +115,25 @@ public class Player : MonoBehaviour
 
     private void DoubleJump() 
     { 
+        isWallJumping = false;
         canDoubleJump = false;
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, doubleJumpForce);
+    }
+
+    private void WallJump()
+    {
+        canDoubleJump = true;
+        rb.linearVelocity = new Vector2(wallJumpForce.x * -facingDir, wallJumpForce.y);
+        Flip();
+        StopAllCoroutines();
+        StartCoroutine(WallJumpRoutine());
+    }
+
+    private IEnumerator WallJumpRoutine()
+    {
+        isWallJumping = true;
+        yield return new WaitForSeconds(wallJumpDuration);
+        isWallJumping = false;
     }
 
     private void HandleAnimations()
@@ -122,6 +148,12 @@ public class Player : MonoBehaviour
     {
         if(isWallDetected)
             return;
+
+        if (isWallJumping)
+        {
+            return;
+        }
+
         rb.linearVelocity = new Vector2(xInput * moveSpeed, rb.linearVelocity.y);
     }
 
