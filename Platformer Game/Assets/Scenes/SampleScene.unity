@@ -119,63 +119,25 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &344643019
-PrefabInstance:
+--- !u!1 &354156150 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9031582650293354658, guid: 81d36afe9d2b2094f8c8b5e48eeb8d56, type: 3}
+  m_PrefabInstance: {fileID: 477149761}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &354156155
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4213302329147424690, guid: fbbc0a1771c86254fbae5fcc5a697fc2, type: 3}
-      propertyPath: m_Name
-      value: Fruit - Kiwi
-      objectReference: {fileID: 0}
-    - target: {fileID: 6084270151769559199, guid: fbbc0a1771c86254fbae5fcc5a697fc2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.601657
-      objectReference: {fileID: 0}
-    - target: {fileID: 6084270151769559199, guid: fbbc0a1771c86254fbae5fcc5a697fc2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -8.027395
-      objectReference: {fileID: 0}
-    - target: {fileID: 6084270151769559199, guid: fbbc0a1771c86254fbae5fcc5a697fc2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6084270151769559199, guid: fbbc0a1771c86254fbae5fcc5a697fc2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6084270151769559199, guid: fbbc0a1771c86254fbae5fcc5a697fc2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6084270151769559199, guid: fbbc0a1771c86254fbae5fcc5a697fc2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6084270151769559199, guid: fbbc0a1771c86254fbae5fcc5a697fc2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6084270151769559199, guid: fbbc0a1771c86254fbae5fcc5a697fc2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6084270151769559199, guid: fbbc0a1771c86254fbae5fcc5a697fc2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6084270151769559199, guid: fbbc0a1771c86254fbae5fcc5a697fc2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fbbc0a1771c86254fbae5fcc5a697fc2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354156150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1f17b70f28e51d49ac50ae4991c91f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Fruit
+  fruitType: 0
+  pickupVfx: {fileID: 0}
 --- !u!1001 &477149761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -184,17 +146,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5985891013052520521, guid: 81d36afe9d2b2094f8c8b5e48eeb8d56, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5985891013052520521, guid: 81d36afe9d2b2094f8c8b5e48eeb8d56, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7595042813520029161, guid: 81d36afe9d2b2094f8c8b5e48eeb8d56, type: 3}
       propertyPath: m_Name
       value: Fruit - Apple
       objectReference: {fileID: 0}
     - target: {fileID: 8063942974575180658, guid: 81d36afe9d2b2094f8c8b5e48eeb8d56, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.5989556
+      value: 6.34
       objectReference: {fileID: 0}
     - target: {fileID: 8063942974575180658, guid: 81d36afe9d2b2094f8c8b5e48eeb8d56, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.8345068
+      value: -2.93
       objectReference: {fileID: 0}
     - target: {fileID: 8063942974575180658, guid: 81d36afe9d2b2094f8c8b5e48eeb8d56, type: 3}
       propertyPath: m_LocalPosition.z
@@ -231,7 +201,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9031582650293354658, guid: 81d36afe9d2b2094f8c8b5e48eeb8d56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 354156155}
   m_SourcePrefab: {fileID: 100100000, guid: 81d36afe9d2b2094f8c8b5e48eeb8d56, type: 3}
 --- !u!1 &519420028
 GameObject:
@@ -399,8 +372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be56fa0f0e1898647b8b0e0ac5506926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  player: {fileID: 0}
-  fruitHaveRandomLook: 0
+  player: {fileID: 2122648865}
+  fruitsHaveRandomLook: 0
   fruitsCollected: 0
 --- !u!4 &709749330
 Transform:
@@ -417,63 +390,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &946126009
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3012880814493985338, guid: f11e6d24ac20aa246a855933b7917802, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.2134037
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012880814493985338, guid: f11e6d24ac20aa246a855933b7917802, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5.027623
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012880814493985338, guid: f11e6d24ac20aa246a855933b7917802, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012880814493985338, guid: f11e6d24ac20aa246a855933b7917802, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012880814493985338, guid: f11e6d24ac20aa246a855933b7917802, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012880814493985338, guid: f11e6d24ac20aa246a855933b7917802, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012880814493985338, guid: f11e6d24ac20aa246a855933b7917802, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012880814493985338, guid: f11e6d24ac20aa246a855933b7917802, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012880814493985338, guid: f11e6d24ac20aa246a855933b7917802, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012880814493985338, guid: f11e6d24ac20aa246a855933b7917802, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5177138949521671447, guid: f11e6d24ac20aa246a855933b7917802, type: 3}
-      propertyPath: m_Name
-      value: Fruit - Banana
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f11e6d24ac20aa246a855933b7917802, type: 3}
 --- !u!1 &1358609891
 GameObject:
   m_ObjectHideFlags: 0
@@ -14861,6 +14777,4 @@ SceneRoots:
   - {fileID: 2122648864}
   - {fileID: 2023080120}
   - {fileID: 709749330}
-  - {fileID: 344643019}
   - {fileID: 477149761}
-  - {fileID: 946126009}

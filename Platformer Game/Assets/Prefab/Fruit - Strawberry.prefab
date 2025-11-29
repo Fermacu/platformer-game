@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6907174957374854241}
   - component: {fileID: 5897380988687072449}
+  - component: {fileID: 7025275489886109937}
   m_Layer: 0
   m_Name: Fruit - Strawberry
   m_TagString: Untagged
@@ -46,6 +47,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   fruitType: 7
+  pickupVfx: {fileID: 7726114848433472004, guid: 750616a4c4ecdc546bde07f34d575b77, type: 3}
+--- !u!58 &7025275489886109937
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175236122217072270}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.23461938, y: 0.6276579}
+  m_Radius: 0.47192597
 --- !u!1 &8156263238948090408
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +95,6 @@ GameObject:
   - component: {fileID: 5768610591650850225}
   - component: {fileID: 9030037865189350568}
   - component: {fileID: 9194608416602208204}
-  - component: {fileID: 4385803156569116372}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -160,39 +197,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!58 &4385803156569116372
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8156263238948090408}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5

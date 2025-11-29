@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5142533473833389500}
   - component: {fileID: 5795163781524479582}
+  - component: {fileID: 7570899718378771703}
   m_Layer: 0
   m_Name: Orange
   m_TagString: Untagged
@@ -45,7 +46,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f17b70f28e51d49ac50ae4991c91f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  fruitType: 0
+  fruitType: 5
+  pickupVfx: {fileID: 7726114848433472004, guid: 750616a4c4ecdc546bde07f34d575b77, type: 3}
+--- !u!58 &7570899718378771703
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7134084600267735897}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.284752, y: 0.6336738}
+  m_Radius: 0.5842222
 --- !u!1 &8942878176393205379
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +95,6 @@ GameObject:
   - component: {fileID: 6461565353481546033}
   - component: {fileID: 7233674849173670002}
   - component: {fileID: 2594683631748049428}
-  - component: {fileID: 8297138530500719238}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -160,39 +197,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!58 &8297138530500719238
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8942878176393205379}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
