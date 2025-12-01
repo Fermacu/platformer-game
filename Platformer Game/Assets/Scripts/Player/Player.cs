@@ -99,12 +99,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Knockback()
+    public void Knockback(float sourceDamageXPosition)
     {
-        if(isKnocked)
+        float knockBackDir = 1;
+
+        if(transform.position.x < sourceDamageXPosition)
+            knockBackDir = -1;
+
+        if (isKnocked)
             return;
         StartCoroutine(KnockbackRoutine());
-        rb.linearVelocity = new Vector2(knockbackPower.x * -facingDir, knockbackPower.y);
+        rb.linearVelocity = new Vector2(knockbackPower.x * knockBackDir, knockbackPower.y);
     }
 
     private IEnumerator KnockbackRoutine()
