@@ -7,8 +7,11 @@ public class Player : MonoBehaviour
 {
 
     private Rigidbody2D rb;
-
     private Animator anim;
+    private CapsuleCollider2D cd;
+
+    private float defaultGravityScale;
+    private bool canBeControlled = false;
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed;
@@ -32,7 +35,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector2 knockbackPower;
     private bool isKnocked;
 
-    [Header("Collision Info")]
+    [Header("Collision")]
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private float wallCheckDistance;
     [SerializeField] private LayerMask whatIsGround;
@@ -46,27 +49,54 @@ public class Player : MonoBehaviour
     private bool facingRight = true;
     private int facingDir = 1;
 
+    [Header("VFX")]
+    [SerializeField] private GameObject deathVfx;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        cd = GetComponent<CapsuleCollider2D>();
         anim = GetComponentInChildren<Animator>();
+    }
+
+    private void Start()
+    {
+        defaultGravityScale = rb.gravityScale;
+        RespawnFinished(false);
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K))
-            Knockback();
+        UpdateAirborneStatus();
 
-        if(isKnocked)
+        if (canBeControlled == false)
             return;
 
-        UpdateAirborneStatus(); 
+        if (isKnocked)
+            return;
+
         HandleInput();
         HandleWallSlide();
         HandleMovement();
         HandleFlip();
         HandleCollision();
         HandleAnimations();
+    }
+
+    public void RespawnFinished(bool finished)
+    {
+        if (finished)
+        {
+            rb.gravityScale = defaultGravityScale;
+            canBeControlled = true;
+            cd.enabled = true;
+        }
+        else
+        {
+            rb.gravityScale = 0;
+            canBeControlled = false;
+            cd.enabled = false;
+        }
     }
 
     public void Knockback()
@@ -84,6 +114,14 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(knockbackDuration);
         isKnocked = false;
     }
+
+    public void Die()
+    {
+        GameObject newDeathVfx = Instantiate(deathVfx, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
+    
 
     private void UpdateAirborneStatus()
     {
