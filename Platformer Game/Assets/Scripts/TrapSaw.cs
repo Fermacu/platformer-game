@@ -9,18 +9,32 @@ public class TrapSaw : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float cooldown = 1;
     [SerializeField] private Transform[] wayPoint;
+    private Vector3[] wayPointPosition;
 
     public int wayPointIndex = 1;
+    public int moveDirection = 1;
     private bool canMove = true;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
     {
-        transform.position = wayPoint[0].position;
+        UpdateWaypointsInfo();
+        transform.position = wayPointPosition[0];
+    }
+
+    private void UpdateWaypointsInfo()
+    {
+        wayPointPosition = new Vector3[wayPoint.Length];
+
+        for (int i = 0; i < wayPoint.Length; i++)
+        {
+            wayPointPosition[i] = wayPoint[i].position;
+        }
     }
 
     private void Update()
@@ -29,22 +43,23 @@ public class TrapSaw : MonoBehaviour
 
         if (!canMove) return;
 
-        transform.position = Vector2.MoveTowards(transform.position, wayPoint[wayPointIndex].position, moveSpeed * Time.deltaTime);
-        if (Vector2.Distance(transform.position, wayPoint[wayPointIndex].position) < .1f)
+        transform.position = Vector2.MoveTowards(transform.position, wayPointPosition[wayPointIndex], moveSpeed * Time.deltaTime);
+        if (Vector2.Distance(transform.position, wayPointPosition[wayPointIndex]) < .1f)
         {
-            wayPointIndex++;
-            if (wayPointIndex >= wayPoint.Length)
-            {
-                wayPointIndex = 0;
+            if(wayPointIndex == wayPointPosition.Length - 1 || wayPointIndex == 0)
+                moveDirection = moveDirection * -1;
                 StartCoroutine(StopMovement(cooldown));
-            }
+
+            wayPointIndex = wayPointIndex + moveDirection;
         }
     }
 
     private IEnumerator StopMovement(float delay)
     {
         canMove = false;
+        
         yield return new WaitForSeconds(delay);
+
         canMove = true;
         sr.flipX = !sr.flipX;
     }
