@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     private void CollectFruits()
     {
-        Fruit[] allFruits = FindObjectsOfType<Fruit>();
+        Fruit[] allFruits = FindObjectsByType<Fruit>(FindObjectsSortMode.None);
         totalFruits = allFruits.Length;
     }
 
