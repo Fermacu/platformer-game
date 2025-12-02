@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TrapSaw : MonoBehaviour
@@ -29,6 +30,18 @@ public class TrapSaw : MonoBehaviour
 
     private void UpdateWaypointsInfo()
     {
+        List<Trap_SawWaypoint> waypointList = new List<Trap_SawWaypoint>(GetComponentsInChildren<Trap_SawWaypoint>());
+
+        if(waypointList.Count != wayPoint.Length)
+        {
+            wayPoint = new Transform[waypointList.Count];
+            
+            for (int i = 0; i < waypointList.Count; i++)
+            {
+                wayPoint[i] = waypointList[i].transform;
+            }
+        }
+
         wayPointPosition = new Vector3[wayPoint.Length];
 
         for (int i = 0; i < wayPoint.Length; i++)
