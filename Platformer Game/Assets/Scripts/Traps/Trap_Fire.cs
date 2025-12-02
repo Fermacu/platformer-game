@@ -1,16 +1,49 @@
+using System.Collections;
 using UnityEngine;
 
 public class Trap_Fire : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private float offDuration;
+    [SerializeField] private Trap_FireButton fireButton;
+
+    private Animator anim;
+    private CapsuleCollider2D fireCollider;
+    private bool isActive;
+
+    private void Awake()
     {
-        
+        anim = GetComponent<Animator>();
+        fireCollider = GetComponent<CapsuleCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        if(fireButton != null)
+        {
+           Debug.Log("You dont have to use a fire button on this trap.");
+        }
+        SetFire(true);
+    }
+
+    public void SwitchOffFire()
+    {
+        if (isActive == false)
+            return;
+
+        StartCoroutine(FireCoroutine());
+    }
+
+    private IEnumerator FireCoroutine()
+    {
+        SetFire(false);
+        yield return new WaitForSeconds(offDuration);
+        SetFire(true);
+    }
+
+    private void SetFire(bool active)
+    {
+        anim.SetBool("active", active);
+        fireCollider.enabled = active;
+        isActive = active;
     }
 }

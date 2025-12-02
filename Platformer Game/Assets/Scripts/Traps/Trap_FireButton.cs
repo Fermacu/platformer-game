@@ -2,15 +2,23 @@ using UnityEngine;
 
 public class Trap_FireButton : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Animator anim;
+    private Trap_Fire trapFire;
+
+    private void Awake()
     {
-        
+        anim = GetComponent<Animator>();
+        trapFire = GetComponentInParent<Trap_Fire>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        Player player = collision.gameObject.GetComponent<Player>();
+
+        if (player != null)
+        {
+            anim.SetTrigger("activate");
+            trapFire.SwitchOffFire();
+        }
     }
 }
