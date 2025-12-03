@@ -39,6 +39,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private float wallCheckDistance;
     [SerializeField] private LayerMask whatIsGround;
+    [Space]
+    [SerializeField] private Transform enemyCheck;
+    [SerializeField] private float enemyCheckRadius;
+    [SerializeField] private LayerMask whatIsEnemy;
     private bool isGrounded;
     private bool isAirborne;
     private bool isWallDetected;
@@ -79,12 +83,32 @@ public class Player : MonoBehaviour
         if (isKnocked)
             return;
 
+        HandleEnemyDetection();
         HandleInput();
         HandleWallSlide();
         HandleMovement();
         HandleFlip();
         HandleCollision();
         HandleAnimations();
+    }
+
+    private void HandleEnemyDetection()
+    {
+        if(rb.linearVelocity.y >= 0)
+            return;
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(enemyCheck.position, enemyCheckRadius, whatIsEnemy);
+
+        foreach (var enemy in colliders)
+        {
+
+            Enemy newEnemy = enemy.GetComponent<Enemy>();
+            if (newEnemy != null)
+            {
+                newEnemy.Die();
+                Jump();
+            }
+        }
     }
 
     public void RespawnFinished(bool finished)
@@ -264,6 +288,12 @@ public class Player : MonoBehaviour
 
     }
 
+    private void HandleCollision()
+    {
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
+        isWallDetected = Physics2D.Raycast(transform.position, Vector2.right * facingDir, wallCheckDistance, whatIsGround);
+    }
+
     private void HandleAnimations()
     {
         anim.SetFloat("xVelocity", rb.linearVelocity.x);
@@ -285,13 +315,6 @@ public class Player : MonoBehaviour
         rb.linearVelocity = new Vector2(xInput * moveSpeed, rb.linearVelocity.y);
     }
 
-    private void Flip()
-    {
-        facingDir = facingDir * -1;
-        transform.Rotate(0, 180, 0);
-        facingRight = !facingRight;
-    }
-
     private void HandleFlip()
     {
         if (xInput < 0 && facingRight || xInput > 0 && !facingRight)
@@ -300,14 +323,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void HandleCollision()
+    private void Flip()
     {
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
-        isWallDetected = Physics2D.Raycast(transform.position, Vector2.right * facingDir, wallCheckDistance, whatIsGround);
+        facingDir = facingDir * -1;
+        transform.Rotate(0, 180, 0);
+        facingRight = !facingRight;
     }
 
     private void OnDrawGizmos()
     {
+        Gizmos.DrawWireSphere(enemyCheck.position, enemyCheckRadius);
         Gizmos.DrawLine(transform.position, new Vector2(transform.position.x, transform.position.y - groundCheckDistance));
         Gizmos.DrawLine(transform.position, new Vector2(transform.position.x + wallCheckDistance * facingDir, transform.position.y));
     }
