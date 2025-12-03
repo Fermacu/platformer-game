@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -69,4 +70,6 @@ public class GameManager : MonoBehaviour
 
         GameObject newObject = Instantiate(prefab, newPosition, Quaternion.identity);
     }
+
+    public void LoadTheEndScene() => SceneManager.LoadScene("TheEnd");
 }
