@@ -16263,7 +16263,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.13483691, y: -0.2678218}
+  m_Offset: {x: 0.13483691, y: -0.4510088}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -16273,7 +16273,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.471984, y: 1.5409365}
+  m_Size: {x: 2.471984, y: 1.1745625}
   m_EdgeRadius: 0
 --- !u!1001 &4559114096925567892
 PrefabInstance:
@@ -16593,8 +16593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c35fb7677414a4eaeaeef6d8682970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Rino
-  player: {fileID: 2122648868}
-  damageTrigger: {fileID: 4933800078177689501}
   moveSpeed: 5
   idleDuration: 1.5
   deathImpactSpeed: 5
@@ -16610,7 +16608,7 @@ MonoBehaviour:
   groundCheck: {fileID: 3259133302439920792}
   maxSpeed: 8
   speedUpRate: 1.5
-  impactPower: {x: 5, y: 8}
+  impactPower: {x: 4, y: 9}
   detectionRange: 15
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
