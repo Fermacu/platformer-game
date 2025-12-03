@@ -264,6 +264,12 @@ public class Player : MonoBehaviour
 
     }
 
+    private void HandleCollision()
+    {
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
+        isWallDetected = Physics2D.Raycast(transform.position, Vector2.right * facingDir, wallCheckDistance, whatIsGround);
+    }
+
     private void HandleAnimations()
     {
         anim.SetFloat("xVelocity", rb.linearVelocity.x);
@@ -285,13 +291,6 @@ public class Player : MonoBehaviour
         rb.linearVelocity = new Vector2(xInput * moveSpeed, rb.linearVelocity.y);
     }
 
-    private void Flip()
-    {
-        facingDir = facingDir * -1;
-        transform.Rotate(0, 180, 0);
-        facingRight = !facingRight;
-    }
-
     private void HandleFlip()
     {
         if (xInput < 0 && facingRight || xInput > 0 && !facingRight)
@@ -300,10 +299,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void HandleCollision()
+    private void Flip()
     {
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
-        isWallDetected = Physics2D.Raycast(transform.position, Vector2.right * facingDir, wallCheckDistance, whatIsGround);
+        facingDir = facingDir * -1;
+        transform.Rotate(0, 180, 0);
+        facingRight = !facingRight;
     }
 
     private void OnDrawGizmos()
